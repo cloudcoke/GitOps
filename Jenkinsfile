@@ -10,7 +10,9 @@ pipeline {
     stage('k8s deploy'){
       steps {
         script {
-          sh "find . -name "*.yaml" | xargs -I {} kubectl --kubeconfig=/home/docker/.kube/config apply -f {}"
+          sh '''
+          find . -name "*.yaml" | xargs -I {} kubectl --kubeconfig=/home/docker/.kube/config apply -f {}
+          '''
         }
       }
     }    
