@@ -11,7 +11,7 @@ pipeline {
       steps {
         script {
           sh '''
-          find . -name "*.yaml" | xargs -I {} kubectl --kubeconfig=/home/docker/.kube/config apply -f {}
+          find . -name "*.yaml" | xargs -I {} kubectl --kubeconfig=/home/jenkins/agent/config apply -f {}
           '''
         }
       }
