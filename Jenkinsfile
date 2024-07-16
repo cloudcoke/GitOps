@@ -9,8 +9,9 @@ pipeline {
     }
     stage('k8s deploy'){
       steps {
-        kubernetesDeploy(kubeconfigId: 'kubeconfig',
-                         configs: '*.yaml')
+        script {
+          sh "find . -name "*.yaml" | xargs -I {} kubectl --kubeconfig=/home/docker/.kube/config apply -f {}"
+        }
       }
     }    
   }
